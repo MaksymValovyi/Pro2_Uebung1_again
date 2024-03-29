@@ -45,12 +45,14 @@ IVektor::~IVektor() {
 }
 
 int IVektor::getSize(){
-    return this->groesse;
+    return this->groesse-1;
+    /*
     int size =-1;
     bool like_comlicated = false;
     if(like_comlicated){
         //int number
     }
+    */
 }
 
 int IVektor::getAt(int n){
@@ -92,7 +94,6 @@ IVektor IVektor::getSubVector(int begin, int end){
         begin = 0;
     }
 
-
     for(int i = 0; i <= vektor.groesse; i++){
         vektor.daten[i]=begin;
         cout << "vektor [ " << i << " ] = " << begin << endl;
@@ -106,12 +107,12 @@ void IVektor::setSubVector(IVektor v){
     int howLong;
     
     if(this->daten !=nullptr && v.daten!=nullptr){
-        int src_len=v.getSize();
+        int src_len = v.getSize();
         int dst_len = this->getSize();
         int src_ind = 0;
         int dst_ind = 0;
 
-        while((src_ind <= src_len) && (dst_ind<dst_len)){
+        while((src_ind <= src_len) && (dst_ind <= dst_len)){
             this->setAt(dst_ind, v.getAt(src_ind));
             src_ind++;
             dst_ind++;
@@ -131,7 +132,6 @@ void IVektor::setSubVector(IVektor v){
         //v.setAt(i, v.getAt(i));
     }
     */
-    cout << "V2 before" << endl;
     //v.print();
 
 
@@ -143,7 +143,7 @@ void IVektor::setSubVector(IVektor v){
 
 void IVektor::print(){
     cout << "Your Vektor" << endl;
-    for (int i = 0; i <= this->groesse; i++){
+    for (int i = 0; i < this->groesse; i++){
         cout << this->daten[i] << endl;
     }
 }
