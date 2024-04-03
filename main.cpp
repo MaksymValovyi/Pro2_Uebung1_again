@@ -34,6 +34,23 @@ void test2(){
     v2.print();
 }
 
+void test3() {
+    IVektor v1(10);
+    IVektor v2 = v1;
+    for (int i = 0; i <= v1.getSize(); i++)
+    {
+        v1.setAt(i, zufallNummer());
+    }
+    v1.print();
+    v2.print();
+    for (int i = 0; i <= v2.getSize(); i++)
+    {
+        v2.setAt(i, zufallNummer());
+    }
+    v1.print();
+    v2.print();
+}
+
 int main(int argc, char *argv[])
 {
     int i=10;
@@ -70,7 +87,11 @@ int main(int argc, char *argv[])
     cout <<endl << "PRINT" << endl;
     v2.print();
     */
-    cout <<endl << "TEST 2" << endl;
-    test2();
+
+    //TEST 2
+    //cout <<endl << "TEST 2" << endl;
+    //test2();
+    cout <<endl << "TEST 3" << endl;
+    test3();
     return 0;
 }
