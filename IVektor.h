@@ -24,6 +24,7 @@ public:
     ~IVektor();
     IVektor(int);
     int getSize();
+    int getSize() const;
     int getAt(int n);
     int getAt(int n) const;
     void setAt(int , int );
@@ -31,5 +32,6 @@ public:
     void setSubVector(IVektor);
     void print();
     IVektor(const IVektor &ivv);
+    IVektor(IVektor &ivv);
 };
 

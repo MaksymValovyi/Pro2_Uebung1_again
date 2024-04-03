@@ -8,7 +8,7 @@ IVektor::IVektor(int n){
    //daten = new int[groesse];
    //this->groesse = groesse;
     this->daten = new int[n];
-    this->groesse = n-1;
+    this->groesse = n;
 
 
 /* Це не круто
@@ -24,7 +24,7 @@ IVektor::IVektor(int n){
         cout << "Memory alloc failure - Proper exception handling will \n";
    }
 }
-
+/*
 IVektor::IVektor(const IVektor &ivv) {
     this->groesse = ivv.groesse; this->daten = new int[this->groesse];
     if (this->daten != nullptr) {
@@ -33,6 +33,28 @@ IVektor::IVektor(const IVektor &ivv) {
             this->setAt(i, ivv.getAt(i));//getAt підкреслена, тому що вектор const
             //UPD, добавили гетАт для констр 
             //рядок 66
+        } 
+    }
+}
+*/
+IVektor::IVektor(const IVektor &ivv) {
+    this->groesse = ivv.groesse;
+    this->daten = new int[this->groesse];
+    if (this->daten != nullptr) {
+        for (int i = 0; i < this->groesse; i++) 
+        { 
+            this->daten[i] = ivv.daten[i];
+        } 
+    }
+}
+
+IVektor::IVektor(IVektor &ivv) {
+    this->groesse = ivv.groesse;
+    this->daten = new int[this->groesse];
+    if (this->daten != nullptr) {
+        for (int i = 0; i < this->groesse; i++) 
+        { 
+            this->daten[i] = ivv.daten[i];
         } 
     }
 }
@@ -46,13 +68,11 @@ IVektor::~IVektor() {
 
 int IVektor::getSize(){
     return this->groesse-1;
-    /*
-    int size =-1;
-    bool like_comlicated = false;
-    if(like_comlicated){
-        //int number
-    }
-    */
+}
+
+int IVektor::getSize() const{
+    return this->groesse-1;
+
 }
 
 int IVektor::getAt(int n){
@@ -62,7 +82,7 @@ int IVektor::getAt(int n){
     }else if(n>this->groesse){
         return this->daten[this->groesse];
     }else{
-        return this->daten[n-1];
+        return this->daten[n];
     }
 }
 
@@ -73,19 +93,24 @@ int IVektor::getAt(int n) const{
     }else if(n>this->groesse){
         return this->daten[this->groesse];
     }else{
-        return this->daten[n-1];
+        return this->daten[n];
     }
 }
 
 void IVektor::setAt(int n, int value){
     if(this->daten != nullptr){
-        if(n<0){
+        if(n<0)
+        {
             n=0;
-        }else if(n>=this->groesse){
-
-        }this->daten[n]=value;
+        }
+        else if(n>=this->groesse)
+        {
+            n=this->groesse;
+        }else{
+            this->daten[n]=value;
+        } 
     }
-    this->daten[n-1]=value;
+    //this->daten[n-1]=value;
 }
 
 IVektor IVektor::getSubVector(int begin, int end){
